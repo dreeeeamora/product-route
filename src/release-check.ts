@@ -29,11 +29,8 @@ const REQUIRED_REF_FILES = [
   "report-template.md",
 ];
 
-const REQUIRED_EXAMPLE_FILES = [
-  "policy-page-hosting.md",
-  "full-video-hosting-risk.md",
-  "qr-code-generator.md",
-];
+// Example files are discovered dynamically:
+// all .md files in zh-CN examples/ must have a corresponding file in en examples/
 
 // ── 工具 ──────────────────────────────────────────────
 
@@ -95,12 +92,25 @@ function checkSkillStructure() {
       }
     }
 
-    // Examples
-    for (const ex of REQUIRED_EXAMPLE_FILES) {
-      if (readFile(path.join(skillDir, "examples", ex))) {
-        pass(`${lang}: examples/${ex}`);
-      } else {
-        fail(`${lang}: examples/${ex} 缺失`);
+    // Examples — dynamically discovered from zh-CN, checked against en
+    const zhExamplesDir = path.resolve(PROJECT_ROOT, "skills/product-route.zh-CN/examples");
+    const zhExamples = fs.existsSync(zhExamplesDir)
+      ? fs.readdirSync(zhExamplesDir).filter(f => f.endsWith(".md"))
+      : [];
+    const enExamplesDir = path.resolve(PROJECT_ROOT, "skills/product-route.en/examples");
+    const enExamples = fs.existsSync(enExamplesDir)
+      ? fs.readdirSync(enExamplesDir).filter(f => f.endsWith(".md"))
+      : [];
+    const allExamples = [...new Set([...zhExamples, ...enExamples])];
+    for (const ex of allExamples) {
+      const zhHas = zhExamples.includes(ex);
+      const enHas = enExamples.includes(ex);
+      if (zhHas && enHas) {
+        pass(`examples/${ex} (两边都有)`);
+      } else if (zhHas) {
+        fail(`en: examples/${ex} 缺失`);
+      } else if (enHas) {
+        fail(`zh-CN: examples/${ex} 缺失`);
       }
     }
   }

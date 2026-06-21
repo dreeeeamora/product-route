@@ -5,14 +5,14 @@
 | ID | 名称 | 英文名 | 一句话描述 |
 |---|---|---|---|
 | R01 | 入口工具 | Entry Tool | 低门槛工具，靠 SEO/分发获客 |
-| R02 | 货架服务 | Shelf Service | 标准化 SaaS，用户自助购买 |
-| R03 | 内部基础设施 | Internal Infrastructure | 复用型内部工具 |
-| R04 | 第三方封装 | Third-party Wrapper | 封装底层复杂服务 |
-| R05 | 销售型服务 | Sales-led Service | 需要销售介入 |
-| R06 | 内容或社区产品 | Content / Community | 以内容或社群为核心 |
-| R07 | 高风险基础设施，暂缓 | High-risk Infrastructure | 涉及高风险，建议窄化或暂缓 |
-| R08 | 只适合做功能 | Feature Only | 不适合独立产品 |
-| R09 | 信息不足，先调研 | Research First | 关键证据缺失 |
+| R02 | 货架服务 | Shelf Service | 标准化 SaaS，用户自助购买，长期挂在货架上 |
+| R03 | 内部基础设施 | Internal Infrastructure | 复用型内部工具，先满足自己再考虑对外 |
+| R04 | 第三方封装 | Third-party Wrapper | 封装底层复杂服务，提供简化界面 |
+| R05 | 销售型服务 | Sales-led Service | 需要销售介入、定制接入、合同谈判 |
+| R06 | 内容或社区产品 | Content / Community | 以内容或社群为核心价值，工具是辅助 |
+| R07 | 高风险基础设施，暂缓 | High-risk Infrastructure | 涉及高风险，建议窄化或暂缓，不要从零造 |
+| R08 | 只适合做功能 | Feature Only | 不适合独立产品，应作为现有产品的功能模块 |
+| R09 | 信息不足，先调研 | Research First | 关键证据缺失，先收集信息再做判断 |
 
 ---
 

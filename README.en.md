@@ -1,14 +1,20 @@
 # Product Route · Product Idea Routing Skill
 
-> **Product Route is an evidence-based AI skill that routes product ideas to the right execution mode.**
+> **A decision-routing framework that maps product ideas to the right execution mode.**
+>
+> Most product failures come from wrong execution mode, not bad ideas.
 
-It doesn't ask "Is this a good idea?" — it asks "What should happen next with this idea?"
+[中文](README.zh-CN.md) | [Main README](README.md)
 
 ---
 
 ## One-Liner
 
-Free yourself from the endless "should I build this" debate. Use evidence and rules to answer a more practical question: **What mode should I use to move this forward?**
+Product Route answers one question:
+
+> Given current evidence, what mode should this idea be executed in?
+
+It doesn't tell you "is this a good idea." It tells you "how should this idea be executed."
 
 ---
 

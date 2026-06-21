@@ -1,55 +1,157 @@
-# Product Route · 产品路线判断 Skill
+# Product Route
 
-> **An evidence-based AI skill that routes product ideas to the right execution mode.**
-> **基于证据的 AI Skill，用来把产品想法路由到合适的推进模式。**
+> **A decision-routing framework that maps product ideas to execution modes.**
+>
+> Most product failures come from wrong execution mode, not bad ideas.
 
-It doesn't ask "Is this a good idea?" — it asks "What should happen next?"
-
-[中文文档](README.zh-CN.md) | [English Docs](README.en.md)
+[中文](README.zh-CN.md) | [English](README.en.md)
 
 ---
 
-## What It Does
+## What This Is
 
-Product Route evaluates a product idea through a fixed pipeline:
+Product Route answers one question:
 
-```
-Evidence → Score → Risk Gate → Route → MVP Boundary → Validation Action
-```
+> Given what we know right now, what's the right way to execute this idea?
 
-It routes ideas into one of **9 modes**:
+It does **not** tell you whether an idea is good. It tells you which execution mode fits.
 
-| ID | Name |
+| If your idea is... | Product Route tells you... |
 |---|---|
-| R01 | Entry Tool / 入口工具 |
-| R02 | Shelf Service / 货架服务 |
-| R03 | Internal Infrastructure / 内部基础设施 |
-| R04 | Third-party Wrapper / 第三方封装 |
-| R05 | Sales-led Service / 销售型服务 |
-| R06 | Content / Community Product / 内容或社区产品 |
-| R07 | High-risk Infrastructure, Defer / 高风险基础设施暂缓 |
-| R08 | Feature Only, Not Standalone / 只适合做功能 |
-| R09 | Research First / 先调研 |
+| A QR code generator | Don't build a SaaS. Build an entry tool. |
+| A video hosting platform | Don't build infrastructure. Wrap Mux/Vimeo. |
+| A privacy policy tool | Don't build a free tool. Build a shelf service. |
+| An AI Twitter summarizer | Don't build a tool. Build content + automation. |
+
+## What This Is NOT
+
+- ❌ An idea scoring tool ("your idea is 7.3/10")
+- ❌ A business plan generator
+- ❌ A startup validator
+- ❌ Investment advice
+
+## The Problem
+
+**Traditional product thinking asks the wrong question.**
+
+Asking "is this a good idea?" is useless because:
+- Most ideas are neither good nor bad — they're unvalidated
+- The same idea succeeds or fails based on execution mode
+- "Good idea + wrong mode" kills more projects than "bad idea"
+
+**Example:** A privacy policy generator.
+- SaaS mode → hard to differentiate, weak willingness to pay → likely fails
+- Shelf service mode → low maintenance, clear trigger (app review) → sustainable
+- *Same idea, different execution mode, opposite outcomes.*
+
+**The execution mode is the idea.** Not an afterthought — it's the core decision.
+
+## How It Works
+
+```
+INPUT                    PROCESSING                     OUTPUT
+┌──────────────┐         ┌──────────────────┐         ┌─────────────────┐
+│ idea          │         │ evidence check    │         │ route (R01-R09)  │
+│ constraints   │  ──▶    │ risk gate filter  │  ──▶    │ MVP boundary     │
+│ context       │         │ execution routing │         │ validation action│
+└──────────────┘         └──────────────────┘         └─────────────────┘
+```
+
+**Input:** idea description, known constraints, any context signals (user data, competitor info, market signals)
+
+**Processing:**
+1. Evidence extraction — what do we actually know?
+2. 12-dimension scoring — S01 trigger clarity through S12 stage fit
+3. Confidence penalty — weak evidence → capped scores
+4. Risk gate check — G01 payment through G08 infrastructure
+5. Execution routing — hard rules map scores to execution mode
+
+**Output:**
+- Execution mode (one of R01–R09)
+- MVP boundary (what to build, what NOT to build)
+- Minimum-cost validation action (1–3 days, concrete steps)
+
+## 9 Execution Modes
+
+| Route | Name | 1-line Meaning | Real Example |
+|---|---|---|---|
+| R01 | Entry Tool | Free, low-barrier tool that acquires via distribution | QR code generator |
+| R02 | Shelf Service | Standardized SaaS; users buy, it sits on the shelf | Privacy policy hosting |
+| R03 | Internal Infrastructure | Build for yourself; reuse value > external demand | Internal CI/CD dashboard |
+| R04 | Third-party Wrapper | Simplify a complex underlying service | Stripe payment dashboard |
+| R05 | Sales-led Service | Custom integration, high-touch, per-client revenue | Enterprise SSO integration |
+| R06 | Content / Community | Distribution-dependent; content is the product | AI Twitter summarizer |
+| R07 | High-risk, Defer | Narrow scope; don't build infrastructure from scratch | Video hosting platform |
+| R08 | Feature, Not Standalone | Belongs inside an existing product | "Export PDF" button |
+| R09 | Research First | Not enough evidence; do 3 validation actions first | "Something for developers" |
+
+---
+
+## Full Example
+
+### Input
+> "An AI tool that summarizes Twitter content — threads, lists, bookmarks."
+
+### What Product Route produces:
+
+**Route: R06 — Content / Community Product**
+
+Why not SaaS? The core value is the summary content itself. Users come for the output, not the tool. Without a content distribution loop, retention dies. The right execution mode is content-first: publish summaries, build audience, then add tooling.
+
+Why not R01 Entry Tool? An entry tool implies the tool IS the product. Here the tool is secondary to the content it produces.
+
+**MVP boundary:**
+- Build: automated summary generation pipeline + scheduled posting
+- Don't build: user accounts, paid tiers, custom AI models, dashboard
+
+**Validation action (1 day):**
+1. Manually summarize 10 viral Twitter threads
+2. Post as a thread with "summarized by AI" label
+3. Measure engagement vs. your normal posts
+
+---
+
+## Anti-Patterns
+
+Common execution-mode mistakes that kill products:
+
+| Anti-Pattern | Wrong Mode | Right Mode | Why |
+|---|---|---|---|
+| Building SaaS when it should be content | R02 | R06 | Distribution problem, not tool problem |
+| Building infrastructure when it should be a feature | R07 | R08 | Solo dev can't maintain video hosting |
+| Overbuilding a wrapper into a platform | R04 | R02 | Wrapping Stripe ≠ building a payment platform |
+| Monetizing what should be free | R02 | R01 | QR codes will never be a subscription business |
+| Building without evidence | R01–R08 | R09 | "Someone probably needs this" is not evidence |
+
+---
+
+## Project Structure
+
+| Directory | Purpose |
+|---|---|
+| `skills/` | Runtime packages (zh-CN + en) |
+| `dist/` | Single-file bundles for agent injection |
+| `schemas/` | JSON Schema for programmatic use |
+| `tests/` | Regression cases |
+| `extensions/` | Optional MCP / Provider interfaces |
+| `src/` | Build + validation scripts |
 
 ## Quick Start
 
 ```bash
-# Install as Skill package
-skills/product-route.zh-CN/   # Chinese runtime
-skills/product-route.en/      # English runtime
+# Install as Skill
+skills/product-route.zh-CN/    # Chinese runtime
+skills/product-route.en/       # English runtime
 
-# Or use as single-file bundle
+# Or use single-file bundle
 dist/product-route.zh-CN.bundle.md
 dist/product-route.en.bundle.md
+
+# Run release check before tagging
+npx tsx src/release-check.ts
 ```
 
-**Language rule:** The repo is bilingual. Each runtime is monolingual. Never load both language packages in one session.
-
-## What This Is NOT
-
-- ❌ Startup idea scorer
-- ❌ Business plan generator
-- ❌ Investment advice tool
+**Language rule:** Repository is bilingual. Each runtime is monolingual. Never load both in one session.
 
 ## License
 
