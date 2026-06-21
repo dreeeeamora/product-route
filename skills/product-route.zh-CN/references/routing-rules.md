@@ -1,5 +1,22 @@
 # 9 种路由规则
 
+## 目录
+
+1. [路由总览](#路由总览)
+2. [R01 · 入口工具](#r01--入口工具--entry-tool)
+3. [R02 · 货架服务](#r02--货架服务--shelf-service)
+4. [R03 · 内部基础设施](#r03--内部基础设施--internal-infrastructure)
+5. [R04 · 第三方封装](#r04--第三方封装--集成层--third-party-wrapper)
+6. [R05 · 销售型服务](#r05--销售型服务--sales-led-service)
+7. [R06 · 内容或社区产品](#r06--内容或社区产品--content--community-product)
+8. [R07 · 高风险基础设施，暂缓](#r07--高风险基础设施暂缓--high-risk-infrastructure-defer)
+9. [R08 · 只适合做功能](#r08--只适合做功能不适合独立产品--feature-only-not-standalone)
+10. [R09 · 信息不足，先调研](#r09--信息不足先调研--research-first)
+11. [硬性路由规则](#硬性路由规则)
+12. [低频强痛点例外规则](#低频强痛点例外规则)
+
+---
+
 ## 路由总览
 
 | ID | 名称 | 英文名 | 一句话描述 |

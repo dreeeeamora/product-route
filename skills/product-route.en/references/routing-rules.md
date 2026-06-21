@@ -1,5 +1,22 @@
 # 9 Route Types
 
+## Table of Contents
+
+1. [Route Overview](#route-overview)
+2. [R01 · Entry Tool](#r01--entry-tool)
+3. [R02 · Shelf Service](#r02--shelf-service)
+4. [R03 · Internal Infrastructure](#r03--internal-infrastructure)
+5. [R04 · Third-party Wrapper](#r04--third-party-wrapper--integration-layer)
+6. [R05 · Sales-led Service](#r05--sales-led-service)
+7. [R06 · Content / Community Product](#r06--content-or-community-product)
+8. [R07 · High-risk Infrastructure, Defer](#r07--high-risk-infrastructure-defer)
+9. [R08 · Feature Only, Not Standalone](#r08--feature-only-not-standalone)
+10. [R09 · Research First](#r09--research-first)
+11. [Hard Routing Rules](#hard-routing-rules)
+12. [Low-Frequency Strong-Pain Exception Rule](#low-frequency-strong-pain-exception-rule)
+
+---
+
 ## Route Overview
 
 | ID | Name (EN) | Name (ZH) | One-liner |
