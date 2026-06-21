@@ -50,11 +50,11 @@ Asking "is this a good idea?" is useless because:
 
 ```
 INPUT                    PROCESSING                     OUTPUT
-┌──────────────┐         ┌──────────────────┐         ┌─────────────────┐
-│ idea          │         │ evidence check    │         │ route (R01-R09)  │
-│ constraints   │  ──▶    │ risk gate filter  │  ──▶    │ MVP boundary     │
-│ context       │         │ execution routing │         │ validation action│
-└──────────────┘         └──────────────────┘         └─────────────────┘
+┌──────────────┐         ┌───────────────────┐         ┌───────────────────┐
+│ idea         │         │ evidence check    │         │ route (R01-R09)   │
+│ constraints  │  ──▶   │ risk gate filter   │  ──▶   │ MVP boundary      │
+│ context      │         │ execution routing │         │ validation action │
+└──────────────┘         └───────────────────┘         └───────────────────┘
 ```
 
 **Input:** idea description, known constraints, any context signals (user data, competitor info, market signals)
