@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-route.dev/schemas/evidence.schema.json",
+  "title": "Evidence",
+  "description": "产品想法评估的证据结构",
+  "type": "object",
+  "required": ["evidence"],
+  "properties": {
+    "evidence": {
+      "type": "array",
+      "description": "证据列表",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "source_type", "confidence", "content"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "证据 ID，如 E001",
+            "pattern": "^E\\d{3}$"
+          },
+          "type": {
+            "type": "string",
+            "description": "证据类型",
+            "enum": ["supporting", "counter"]
+          },
+          "source_type": {
+            "type": "string",
+            "description": "证据来源类型",
+            "enum": [
+              "manual",
+              "web_research",
+              "interview",
+              "competitor_observation",
+              "case_library",
+              "mcp_tool",
+              "internal_history",
+              "external_provider",
+              "unverified"
+            ]
+          },
+          "confidence": {
+            "type": "string",
+            "description": "证据置信度等级",
+            "enum": ["A", "B", "C", "D"]
+          },
+          "content": {
+            "type": "string",
+            "description": "证据内容描述",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "source_ref": {
+            "type": "string",
+            "description": "证据来源引用",
+            "maxLength": 500
+          },
+          "supports_dimensions": {
+            "type": "array",
+            "description": "该证据支持的评分维度 ID",
+            "items": {
+              "type": "string",
+              "pattern": "^S(0[1-9]|1[0-2])$"
+            }
+          }
+        }
+      }
+    },
+    "counter_evidence": {
+      "type": "array",
+      "description": "反证列表",
+      "items": {
+        "type": "object",
+        "required": ["id", "description", "impact", "confidence"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^CE\\d{3}$"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "impact": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["A", "B", "C", "D"]
+          }
+        }
+      }
+    }
+  }
+}

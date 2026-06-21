@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-route.dev/schemas/result.schema.json",
+  "title": "Product Route Result",
+  "description": "Product Route 评估的最终输出结构",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "skill_version",
+    "runtime_language",
+    "evidence_mode",
+    "mcp_enabled",
+    "idea",
+    "main_route",
+    "main_route_label",
+    "confidence",
+    "scores",
+    "risk_gates",
+    "matched_rules",
+    "blocked_by",
+    "next_action",
+    "do_not_build",
+    "provider_status",
+    "external_evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "JSON Schema 版本",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "skill_version": {
+      "type": "string",
+      "description": "Skill 版本",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "runtime_language": {
+      "type": "string",
+      "description": "运行时语言",
+      "enum": ["zh-CN", "en"]
+    },
+    "evidence_mode": {
+      "type": "string",
+      "description": "证据模式",
+      "enum": ["manual_only", "web_research", "mcp_enabled", "full_providers"]
+    },
+    "mcp_enabled": {
+      "type": "boolean",
+      "description": "MCP 工具是否已启用"
+    },
+    "idea": {
+      "type": "string",
+      "description": "产品想法一句话描述",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "main_route": {
+      "type": "string",
+      "description": "主路由 ID",
+      "pattern": "^R0[1-9]$"
+    },
+    "main_route_label": {
+      "type": "string",
+      "description": "主路由中文名"
+    },
+    "secondary_route": {
+      "type": ["string", "null"],
+      "description": "副路由 ID（可选）",
+      "pattern": "^(R0[1-9]|null)$"
+    },
+    "secondary_route_label": {
+      "type": ["string", "null"],
+      "description": "副路由中文名（可选）"
+    },
+    "confidence": {
+      "type": "string",
+      "description": "整体置信度评级",
+      "enum": ["A", "B", "C", "D"]
+    },
+    "scores": {
+      "type": "object",
+      "required": [
+        "trigger_clarity",
+        "pain_strength",
+        "usage_frequency",
+        "alternative_maturity",
+        "payment_evidence",
+        "user_clarity",
+        "acquisition_clarity",
+        "delivery_complexity",
+        "liability_risk",
+        "maintenance_cost",
+        "reuse_value",
+        "stage_fit"
+      ],
+      "properties": {
+        "trigger_clarity": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "pain_strength": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "usage_frequency": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "alternative_maturity": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "payment_evidence": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "user_clarity": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "acquisition_clarity": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "delivery_complexity": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "liability_risk": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "maintenance_cost": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "reuse_value": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "stage_fit": { "type": "integer", "minimum": 1, "maximum": 5 }
+      },
+      "additionalProperties": false
+    },
+    "risk_gates": {
+      "type": "array",
+      "description": "命中的风险门槛 ID 列表",
+      "items": {
+        "type": "string",
+        "pattern": "^G0[1-8]$"
+      }
+    },
+    "matched_rules": {
+      "type": "array",
+      "description": "命中的路由规则描述",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocked_by": {
+      "type": "array",
+      "description": "阻塞因素",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_action": {
+      "type": "string",
+      "description": "推荐的下一步动作",
+      "maxLength": 500
+    },
+    "do_not_build": {
+      "type": "array",
+      "description": "当前阶段不应该做的事情",
+      "minItems": 5,
+      "items": {
+        "type": "string"
+      }
+    },
+    "provider_status": {
+      "type": "object",
+      "description": "外部 Provider 连接状态",
+      "required": ["case_library", "competitor_research", "keyword_research", "pricing_lookup", "decision_history"],
+      "properties": {
+        "case_library": { "type": "string", "enum": ["connected", "not_connected"] },
+        "competitor_research": { "type": "string", "enum": ["connected", "not_connected"] },
+        "keyword_research": { "type": "string", "enum": ["connected", "not_connected"] },
+        "pricing_lookup": { "type": "string", "enum": ["connected", "not_connected"] },
+        "decision_history": { "type": "string", "enum": ["connected", "not_connected"] }
+      },
+      "additionalProperties": false
+    },
+    "external_evidence": {
+      "type": "object",
+      "required": ["case_library", "competitor_research", "keyword_research", "pricing_lookup", "decision_history", "mcp"],
+      "properties": {
+        "case_library": {
+          "type": "object",
+          "required": ["connected", "refs"],
+          "properties": {
+            "connected": { "type": "boolean" },
+            "refs": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "competitor_research": {
+          "type": "object",
+          "required": ["connected", "refs"],
+          "properties": {
+            "connected": { "type": "boolean" },
+            "refs": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "keyword_research": {
+          "type": "object",
+          "required": ["connected", "refs"],
+          "properties": {
+            "connected": { "type": "boolean" },
+            "refs": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "pricing_lookup": {
+          "type": "object",
+          "required": ["connected", "refs"],
+          "properties": {
+            "connected": { "type": "boolean" },
+            "refs": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "decision_history": {
+          "type": "object",
+          "required": ["connected", "refs"],
+          "properties": {
+            "connected": { "type": "boolean" },
+            "refs": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "mcp": {
+          "type": "object",
+          "required": ["connected", "resources"],
+          "properties": {
+            "connected": { "type": "boolean" },
+            "resources": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

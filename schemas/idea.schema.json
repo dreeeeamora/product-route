@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-route.dev/schemas/idea.schema.json",
+  "title": "Product Idea Input",
+  "description": "用户输入的产品想法结构",
+  "type": "object",
+  "required": ["idea"],
+  "properties": {
+    "idea": {
+      "type": "string",
+      "description": "产品想法的描述",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "target_user": {
+      "type": "string",
+      "description": "目标用户描述",
+      "maxLength": 300
+    },
+    "trigger_scenario": {
+      "type": "string",
+      "description": "触发场景描述",
+      "maxLength": 500
+    },
+    "current_alternative": {
+      "type": "string",
+      "description": "用户当前如何解决这个问题",
+      "maxLength": 500
+    },
+    "user_goal": {
+      "type": "string",
+      "description": "用户想要达成的目标",
+      "maxLength": 300
+    },
+    "constraints": {
+      "type": "array",
+      "description": "已知的约束条件",
+      "items": {
+        "type": "string"
+      }
+    },
+    "stage": {
+      "type": "string",
+      "description": "当前阶段",
+      "enum": ["idea", "research", "prototype", "mvp", "launched", "scaling"]
+    }
+  }
+}
