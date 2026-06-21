@@ -108,9 +108,12 @@ No dimension triggered upper-limit penalties — S08, S09, S10 high scores are t
 **Why Not Other Routes:**
 - R01: Delivery too complex, cannot be a lightweight entry tool
 - R02: Liability and delivery risk too high for self-serve SaaS
+- R03: External-facing product, not internal infrastructure
 - R04: If narrowed to Mux/Vimeo management dashboard, could be R04 → secondary route
 - R05: Could be sales-led service, but doesn't solve core risks
+- R06: Core is video infrastructure, not a content/community product
 - R08: Video hosting has standalone value, not "feature only"
+- R09: Critical evidence is sufficient (competitors mature, risks clear), no need for more research
 
 ---
 

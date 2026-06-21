@@ -50,7 +50,7 @@ Build a QR code generator where users can input text, URLs, contact information 
 
 | Dimension ID | Dimension | Score | Basis | Anchor Hit | Confidence |
 |---|---|---|---|---|---|
-| S01 | Trigger Clarity | 4 | Posters, WiFi, business cards — scenarios are clear and searchable | 4+ scenarios | A |
+| S01 | Trigger Clarity | 4 | Posters, WiFi, business cards — clear trigger events | Clear trigger events: share, download, print, event | A |
 | S02 | Pain Strength | 2 | Free solutions are sufficient; independent tool not necessarily needed | Saves a little time | A |
 | S03 | Usage Frequency | 2 | Occasional use, not daily high-frequency | 1-3 times per month | A |
 | S04 | Alternative Maturity | 5 | Extremely many free competitors, browser and OS built-in | Multiple mature competitors | A |
