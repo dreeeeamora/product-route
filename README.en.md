@@ -8,6 +8,10 @@
 
 ---
 
+<p align="center">
+  <img src="assets/diagrams/product-route-cover.png" alt="Product Route Cover" width="800">
+</p>
+
 ## What This Is
 
 Product Route answers one question:
@@ -57,6 +61,10 @@ INPUT                    PROCESSING                     OUTPUT
 └──────────────┘         └───────────────────┘         └───────────────────┘
 ```
 
+<p align="center">
+  <img src="assets/diagrams/execution-routing-pipeline.png" alt="Execution Routing Pipeline" width="800">
+</p>
+
 **Input:** idea description, known constraints, context signals (user data, competitor info, market signals)
 
 **Processing:**
@@ -85,12 +93,20 @@ INPUT                    PROCESSING                     OUTPUT
 | R08 | Feature, Not Standalone | Belongs inside an existing product | "Export PDF" button |
 | R09 | Research First | Not enough evidence; do 3 validation actions first | "Something for developers" |
 
+<p align="center">
+  <img src="assets/diagrams/execution-route-map.png" alt="Execution Route Map" width="800">
+</p>
+
 ---
 
 ## Full Example
 
 ### Input
 > "An AI tool that summarizes Twitter content — threads, lists, bookmarks."
+
+<p align="center">
+  <img src="assets/diagrams/example-routing-flow.png" alt="Example Routing Flow" width="800">
+</p>
 
 ### What Product Route produces:
 
@@ -122,6 +138,10 @@ Common execution-mode mistakes that kill products:
 | Overbuilding a wrapper into a platform | R04 | R02 | Wrapping Stripe ≠ building a payment platform |
 | Monetizing what should be free | R02 | R01 | QR codes will never be a subscription business |
 | Building without evidence | R01–R08 | R09 | "Someone probably needs this" is not evidence |
+
+<p align="center">
+  <img src="assets/diagrams/execution-mismatch-antipatterns.png" alt="Execution Mismatch Anti-patterns" width="800">
+</p>
 
 ---
 
