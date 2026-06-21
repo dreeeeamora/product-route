@@ -108,3 +108,22 @@ Evidence → Score → Risk Gate → Route → MVP Boundary → Validation Actio
 ## 许可证
 
 MIT
+
+---
+
+## 参与贡献
+
+- [CONTRIBUTING.md](CONTRIBUTING.md) — 贡献指南
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) — 行为准则
+- [SECURITY.md](SECURITY.md) — 安全策略
+
+---
+
+## 多语言
+
+| 语言 | README | Skill 包 |
+|---|---|---|
+| 中文 | README.zh-CN.md | `skills/product-route.zh-CN/` |
+| English | [README.en.md](README.en.md) | `skills/product-route.en/` |
+
+> 仓库双语，运行单语。不要在同一个 Agent 上下文里同时装中英文包。
