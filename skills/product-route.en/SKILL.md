@@ -117,7 +117,12 @@ Every evaluation report must contain these 14 sections:
 
 See `examples/` directory:
 
-- `policy-page-hosting.md` — Policy page hosting (R02 Shelf Service)
-- `full-video-hosting-risk.md` — Full video hosting platform (R07 High-risk Defer)
 - `qr-code-generator.md` — QR code generator (R01 Entry Tool)
+- `policy-page-hosting.md` — Policy page hosting (R02 Shelf Service)
+- `internal-cicd-dashboard.md` — Internal CI/CD dashboard (R03 Internal Infrastructure)
+- `stripe-payment-dashboard.md` — Stripe payment dashboard (R04 Third-party Wrapper)
+- `enterprise-sso-integration.md` — Enterprise SSO integration (R05 Sales-led Service)
 - `ai-twitter-summarizer.md` — AI Twitter summarizer (R06 Content/Community)
+- `full-video-hosting-risk.md` — Full video hosting platform (R07 High-risk Defer)
+- `online-mindmap-tool.md` — Online mindmap tool (R08 Feature Only)
+- `vague-remote-team-tool.md` — Vague remote team tool (R09 Research First)

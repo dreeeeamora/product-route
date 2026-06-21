@@ -113,7 +113,12 @@ compatibility: no_external_dependencies
 
 参见 `examples/` 目录中的示例评估：
 
-- `policy-page-hosting.md` — 政策页托管工具（R02 货架服务）
-- `full-video-hosting-risk.md` — 完整视频托管平台（R07 高风险基础设施）
 - `qr-code-generator.md` — 二维码生成器（R01 入口工具）
+- `policy-page-hosting.md` — 政策页托管工具（R02 货架服务）
+- `internal-cicd-dashboard.md` — 内部 CI/CD 部署面板（R03 内部基础设施）
+- `stripe-payment-dashboard.md` — Stripe 支付管理面板（R04 第三方封装）
+- `enterprise-sso-integration.md` — 企业 SSO 集成服务（R05 销售型服务）
 - `ai-twitter-summarizer.md` — AI Twitter 摘要（R06 内容/社区产品）
+- `full-video-hosting-risk.md` — 完整视频托管平台（R07 高风险基础设施）
+- `online-mindmap-tool.md` — 在线思维导图（R08 只适合做功能）
+- `vague-remote-team-tool.md` — 模糊远程团队工具（R09 信息不足先调研）
